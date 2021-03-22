@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   debug_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lorenuar <lorenuar@student.s19.be>         +#+  +:+       +#+        */
+/*   By: mhadad <mhadad@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 18:21:34 by lorenuar          #+#    #+#             */
-/*   Updated: 2021/03/11 18:21:49 by lorenuar         ###   ########.fr       */
+/*   Updated: 2021/03/22 15:07:59 by mhadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEBUG_UTILS_H
 # define DEBUG_UTILS_H
-
+# define DEBUG_TRUE
 # include <stdio.h>
 # include <stdint.h>
 
-# ifndef BREAK_PAUSE
-#  define BREAK_PAUSE 1
+# ifndef _BREAK_PAUSE
+#  define _BREAK_PAUSE 1
 # endif
 
 # ifndef _NEWLINE
@@ -34,7 +34,7 @@
 
 # define _BR(NEWLINE) printf("#<[l %d] %s:%s()>#" _BR_NL, __LINE__, __FILE__, __FUNCTION__);
 
-# if BREAK_PAUSE == 1
+# if _BREAK_PAUSE == 1
 #  define BR _BR(0) getchar();
 # else
 #  define BR _BR(1);
@@ -49,11 +49,11 @@
 	char*	: printf("[l %d] %s:%s() | " #var " = \"%s\"" _DE_NL , __LINE__, __FILE__, __FUNCTION__, var),	\
 	default	: printf("[l %d] %s:%s() | " #var " = %p" _DE_NL , __LINE__, __FILE__, __FUNCTION__, var))
 
-# define D_INT(var) printf("[l %d] %s:%s() | " #var " : %d" _DE_NL, __LINE__, __FILE__, __FUNCTION__, var);
-# define D_LINT(var) printf("[l %d] %s:%s() | " #var " : %ld" _DE_NL, __LINE__, __FILE__, __FUNCTION__, var);
-# define D_DOUB(var) printf("[l %d] %s:%s() | " #var " : %f" _DE_NL, __LINE__, __FILE__, __FUNCTION__, var);
-# define D_STR(var) printf("[l %d] %s:%s() | " #var " : \"%s\"" _DE_NL, __LINE__, __FILE__, __FUNCTION__, var);
-# define D_PTR(var) printf"[l %d] %s:%s() | " #var " : <%p>" _DE_NL, __LINE__, __FILE__, __FUNCTION__, var);
+# define D_INT(var) printf("[%d] %-15s | " #var " : %d" _DE_NL, __LINE__, __FUNCTION__, var);
+# define D_LINT(var) printf("[%d] %-15s | " #var " : %ld" _DE_NL, __LINE__, __FUNCTION__, var);
+# define D_DOUB(var) printf("[%d] %-15s | " #var " : %f" _DE_NL, __LINE__, __FUNCTION__, var);
+# define D_STR(var) printf("[%d] %-15s | " #var " : \"%s\"" _DE_NL, __LINE__, __FUNCTION__, var);
+# define D_PTR(var) printf"[%d] %-15s | " #var " : <%p>" _DE_NL, __LINE__, __FUNCTION__, var);
 
 # define D_STR_DETAILS(str) print_str_details(strlen(str), str, #str)
 
