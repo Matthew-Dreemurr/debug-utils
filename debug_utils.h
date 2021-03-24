@@ -6,7 +6,7 @@
 /*   By: mhadad <mhadad@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 18:21:34 by lorenuar          #+#    #+#             */
-/*   Updated: 2021/03/22 15:07:59 by mhadad           ###   ########.fr       */
+/*   Updated: 2021/03/24 11:03:05 by mhadad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@
 # endif
 
 # define DE(var) _Generic(((var)+0),	\
-	int		: printf("[l %d] %s:%s() | " #var " = %d"  _DE_NL , __LINE__, __FILE__, __FUNCTION__, var),	\
-	long	: printf("[l %d] %s:%s() | " #var " = %ld" _DE_NL , __LINE__, __FILE__, __FUNCTION__, var),	\
-	double	: printf("[l %d] %s:%s() | " #var " = %f" _DE_NL , __LINE__, __FILE__, __FUNCTION__, var),	\
-	float	: printf("[l %d] %s:%s() | " #var " = %f" _DE_NL , __LINE__, __FILE__, __FUNCTION__, var),	\
-	size_t	: printf("[l %d] %s:%s() | " #var " = %lu" _DE_NL , __LINE__, __FILE__, __FUNCTION__, var),	\
-	char*	: printf("[l %d] %s:%s() | " #var " = \"%s\"" _DE_NL , __LINE__, __FILE__, __FUNCTION__, var),	\
-	default	: printf("[l %d] %s:%s() | " #var " = %p" _DE_NL , __LINE__, __FILE__, __FUNCTION__, var))
+	int		: printf("[%d] %s | " #var " = %d"  _DE_NL , __LINE__, __FUNCTION__, var),	\
+	long	: printf("[%d] %s | " #var " = %ld" _DE_NL , __LINE__, __FUNCTION__, var),	\
+	double	: printf("[%d] %s | " #var " = %f" _DE_NL , __LINE__, __FUNCTION__, var),	\
+	float	: printf("[%d] %s | " #var " = %f" _DE_NL , __LINE__, __FUNCTION__, var),	\
+	size_t	: printf("[%d] %s | " #var " = %lu" _DE_NL , __LINE__, __FUNCTION__, var),	\
+	char*	: printf("[%d] %s | " #var " = \"%s\"" _DE_NL , __LINE__, __FUNCTION__, var),	\
+	default	: printf("[%d] %s | " #var " = %p" _DE_NL , __LINE__, __FUNCTION__, var))
 
-# define D_INT(var) printf("[%d] %-15s | " #var " : %d" _DE_NL, __LINE__, __FUNCTION__, var);
-# define D_LINT(var) printf("[%d] %-15s | " #var " : %ld" _DE_NL, __LINE__, __FUNCTION__, var);
-# define D_DOUB(var) printf("[%d] %-15s | " #var " : %f" _DE_NL, __LINE__, __FUNCTION__, var);
-# define D_STR(var) printf("[%d] %-15s | " #var " : \"%s\"" _DE_NL, __LINE__, __FUNCTION__, var);
-# define D_PTR(var) printf"[%d] %-15s | " #var " : <%p>" _DE_NL, __LINE__, __FUNCTION__, var);
+# define D_INT(var)		printf("[%d] %-15s | %-6s : %-5d" _DE_NL, __LINE__, __FUNCTION__, #var , var);
+# define D_LINT(var)	printf("[%d] %-15s | %-6s : %-5ld" _DE_NL, __LINE__, __FUNCTION__, #var, var);
+# define D_DOUB(var)	printf("[%d] %-15s | %-6s : %-5f" _DE_NL, __LINE__, __FUNCTION__, #var, var);
+# define D_STR(var)		printf("[%d] %-15s | %-6s : \"%-5s\"" _DE_NL, __LINE__, __FUNCTION__, #var, var);
+# define D_PTR(var)		printf("[%d] %-15s | %-6s : <%-5p>" _DE_NL, __LINE__, __FUNCTION__, #var, var);
 
 # define D_STR_DETAILS(str) print_str_details(strlen(str), str, #str)
 
